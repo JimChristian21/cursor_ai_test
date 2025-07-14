@@ -2,17 +2,29 @@
     "$schema": "https://json.schemastore.org/package.json",
     "private": true,
     "type": "module",
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=7.0.0"
+    },
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "serve": "concurrently \"php artisan serve\" \"npm run dev\"",
+        "start": "php artisan serve",
+        "fresh": "php artisan migrate:fresh --seed",
+        "reset": "rm -rf node_modules package-lock.json && npm install && npm run build"
     },
     "devDependencies": {
+        "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+        "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.8.2",
+        "buffer": "^6.0.3",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^1.2.0",
         "tailwindcss": "^4.0.0",
-        "vite": "^6.2.4"
+        "vite": "^6.2.4",
+        "vite-plugin-node-polyfills": "^0.24.0"
     },
     "dependencies": {
         "@inertiajs/vue3": "^2.0.14",
