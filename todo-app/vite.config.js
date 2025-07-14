@@ -22,6 +22,16 @@ export default defineConfig({
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
+            crypto: 'crypto-browserify',
+            buffer: 'buffer',
+            process: 'process/browser',
         },
+    },
+    define: {
+        global: 'globalThis',
+        'process.env': {},
+    },
+    optimizeDeps: {
+        include: ['crypto-browserify', 'buffer', 'process'],
     },
 });
